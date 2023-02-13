@@ -61,7 +61,7 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right">
 
-                                    <a href="{{ url("meals/$meal->slug/edit") }}"
+                                    <a href="{{ url("meals/$meal->id/edit") }}"
                                         class="px-3 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
 
 

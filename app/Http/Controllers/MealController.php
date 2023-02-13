@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRequest;
 use App\Models\Meal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -17,9 +18,7 @@ class MealController extends Controller
     {
         $AllMeals = Meal::all();
         /* toast('Get meals with success', 'success'); */
-        /* return view('welcome', ['AllMeals' => $AllMeals]); */
         return view('dashboard',  ['AllMeals' => $AllMeals]); //associative array composed of key: 'AllMeals' and value: $AllMeals
-        //associative array composed of key: 'AllMeals' and value: $AllMeals
         /* return view('meals.index', compact('AllMeals')); */
     }
     public function welcome()
@@ -27,11 +26,7 @@ class MealController extends Controller
         $Starters = Meal::all()->where('type', 'Starter');
         $Mains = Meal::all()->where('type', 'Main');
         $Desserts = Meal::all()->where('type', 'Dessert');
-        /* return dd($AllMeals); */
-        /* toast('Get meals with success', 'success'); */
-        /* return view('welcome', ['AllMeals' => $AllMeals]); */
-        return view('welcome',  ['Starters' => $Starters, 'Mains' => $Mains, 'Desserts' => $Desserts]); //associative array composed of key: 'AllMeals' and value: $AllMeals
-        //associative array composed of key: 'AllMeals' and value: $AllMeals
+        return view('welcome',  ['Starters' => $Starters, 'Mains' => $Mains, 'Desserts' => $Desserts]);
         /* return view('meals.index', compact('AllMeals')); */
     }
     /**
@@ -50,20 +45,23 @@ class MealController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        /* dd($request->all()); */
+        /* dd($request->all()); *//*
         $request->validate([
-            'name' => 'required|min:6',
+            'name' => 'required|min:5',
             'day' => 'required',
             'type' => 'required',
-        ]);
-        $Meal['name'] = $request->name;
-        $Meal['description'] = $request->description;
-        $Meal['day'] = $request->day;
-        $Meal['type'] = $request->type;
-        $Meal['slug'] = Str::slug($request->name, '-');
-        Meal::create($Meal);
+        ]); */
+
+        // $Meal['name'] = $request->name;
+        // $Meal['description'] = $request->description;
+        // $Meal['day'] = $request->day;
+        // $Meal['type'] = $request->type;
+        // $Meal['slug'] = Str::slug($request->name, '-');
+        // $request['slug'] = Str::slug($request->name, '-');
+        // dd("aaa");
+        Meal::create($request->validated());
         toast('Meal created with success', 'success');
         return redirect()->route('meals.index');
     }
@@ -85,9 +83,10 @@ class MealController extends Controller
      * @param  \App\Models\Meal  $meal
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit($id)
     {
-        $Meal = Meal::where('slug', $slug)->first();
+        // $Meal = Meal::where('id', $id)->first();
+        $Meal = Meal::find($id);
         /* dd($Meal); */
         return view('meal.edit', ['meal' => $Meal]);
     }
@@ -102,7 +101,7 @@ class MealController extends Controller
     public function update(Request $request, Meal $meal)
     {
         $request->validate([
-            'name' => 'required|min:6',
+            'name' => 'required|min:5',
             'day' => 'required',
             'type' => 'required',
         ]);
@@ -110,7 +109,7 @@ class MealController extends Controller
         $Meal['description'] = $request->description;
         $Meal['day'] = $request->day;
         $Meal['type'] = $request->type;
-        $Meal['slug'] = Str::slug($request->name, '-');
+        // $Meal['slug'] = Str::slug($request->name, '-');
         Meal::where('id', $meal->id)->update($Meal);
         toast('Meal updated with success', 'success');
         return redirect()->route('dashboard');
@@ -125,6 +124,7 @@ class MealController extends Controller
     public function destroy(Meal $meal)
     {
         /* Meal::find($meal->id)->delete(); */
+
         Meal::destroy($meal->id);
         toast('Meal deleted with success', 'success');
         return redirect()->route('meals.index');

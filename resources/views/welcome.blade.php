@@ -48,22 +48,22 @@
                     <table class="w-full text-sm text-left text-white dark:text-black">
                         <thead class="text-xs text-white uppercase dark:text-black">
                             <tr>
-                                <th scope="col-2" class="px-6 py-3 text-black dark:bg-gray-300">
+                                <th scope="col-2" class="px-6 py-3 font-bold text-black dark:bg-gray-300">
                                     Day
                                 </th>
-                                <th scope="col-2" class="px-6 py-3 bg-gray-50 dark:bg-gray-400">
+                                <th scope="col-2" class="px-6 py-3 font-bold bg-gray-50 dark:bg-gray-400">
                                     Monday
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-white">
+                                <th scope="col" class="px-6 py-3 font-bold text-white">
                                     Tuesday
                                 </th>
-                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-400">
+                                <th scope="col" class="px-6 py-3 font-bold bg-gray-50 dark:bg-gray-400">
                                     Wednesday
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-white">
+                                <th scope="col" class="px-6 py-3 font-bold text-white">
                                     Thursday
                                 </th>
-                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-400">
+                                <th scope="col" class="px-6 py-3 font-bold bg-gray-50 dark:bg-gray-400">
                                     Friday
                                 </th>
                             </tr>
@@ -71,21 +71,21 @@
                         <tbody>
                             <tr class="border-b border-gray-200 text-white dark:border-gray-700">
                                 <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-black dark:bg-gray-300">
-                                    {{ 'Starter' }}
+                                    class="px-6 py-4  font-bold text-gray-900 whitespace-nowrap bg-gray-50 dark:text-black dark:bg-gray-300">
+                                    Starter
                                 </th>
                                 <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-400">
                                     @foreach ($Starters as $meal)
                                         {!! $meal->day == 'Monday' ? $meal->name . '<br>' : '' !!}
                                     @endforeach
                                 </th>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 ">
                                     @foreach ($Starters as $meal)
                                         {!! $meal->day == 'Tuesday' ? $meal->name . '<br>' : '' !!}
                                     @endforeach
                                 </td>
-                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-400">
                                     @foreach ($Starters as $meal)
                                         {!! $meal->day == 'Wednesday' ? $meal->name . '<br>' : '' !!}
                                     @endforeach
@@ -95,7 +95,7 @@
                                         {!! $meal->day == 'Thursday' ? $meal->name . '<br>' : '' !!}
                                     @endforeach
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 dark:bg-gray-400">
                                     @foreach ($Starters as $meal)
                                         {!! $meal->day == 'Friday' ? $meal->name . '<br>' : '' !!}
                                     @endforeach
@@ -104,11 +104,11 @@
                             <tr class="border-b border-gray-200 text-white dark:border-gray-700">
 
                                 <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-black dark:bg-gray-300">
-                                    {{ 'Main' }}
+                                    class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap bg-gray-50 dark:text-black dark:bg-gray-300">
+                                    Main
                                 </th>
                                 <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-400">
                                     @foreach ($Mains as $meal)
                                         {!! $meal->day == 'Monday' ? $meal->name . '<br>' : '' !!}
                                     @endforeach
@@ -118,7 +118,7 @@
                                         {!! $meal->day == 'Tuesday' ? $meal->name . '<br>' : '' !!}
                                     @endforeach
                                 </td>
-                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-400">
                                     @foreach ($Mains as $meal)
                                         {!! $meal->day == 'Wednesday' ? $meal->name . '<br>' : '' !!}
                                     @endforeach
@@ -128,7 +128,7 @@
                                         {!! $meal->day == 'Thursday' ? $meal->name . '<br>' : '' !!}
                                     @endforeach
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 dark:bg-gray-400">
                                     @foreach ($Mains as $meal)
                                         {!! $meal->day == 'Friday' ? $meal->name . '<br>' : '' !!}
                                     @endforeach
@@ -137,11 +137,11 @@
                             <tr class="border-b border-gray-200 text-white dark:border-gray-700">
 
                                 <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-black dark:bg-gray-300">
-                                    {{ 'Dessert' }}
+                                    class="px-6 py-4 font-bold text-gray-900 whitespace-nowrap bg-gray-50 dark:text-black dark:bg-gray-300">
+                                    Dessert
                                 </th>
                                 <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-400">
                                     @foreach ($Desserts as $meal)
                                         {!! $meal->day == 'Monday' ? $meal->name . '<br>' : '' !!}
                                     @endforeach
@@ -151,7 +151,7 @@
                                         {!! $meal->day == 'Tuesday' ? $meal->name . '<br>' : '' !!}
                                     @endforeach
                                 </td>
-                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-400">
                                     @foreach ($Desserts as $meal)
                                         {!! $meal->day == 'Wednesday' ? $meal->name . '<br>' : '' !!}
                                     @endforeach
@@ -161,7 +161,7 @@
                                         {!! $meal->day == 'Thursday' ? $meal->name . '<br>' : '' !!}
                                     @endforeach
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 dark:bg-gray-400">
                                     @foreach ($Desserts as $meal)
                                         {!! $meal->day == 'Friday' ? $meal->name . '<br>' : '' !!}
                                     @endforeach
