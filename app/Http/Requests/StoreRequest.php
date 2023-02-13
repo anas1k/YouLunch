@@ -24,11 +24,13 @@ class StoreRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
             'name' => 'required',
             'day' => 'required',
             'type' => 'required',
             'description' => 'nullable',
+            'image' => 'required|image|mimes:jpg,png|max:5120',
             // 'slug' => Str::slug($this->name, '-'),
             // 'slug' => 'required',
         ];

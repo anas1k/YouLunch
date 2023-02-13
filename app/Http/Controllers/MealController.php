@@ -6,6 +6,7 @@ use App\Http\Requests\StoreRequest;
 use App\Models\Meal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class MealController extends Controller
 {
@@ -61,6 +62,7 @@ class MealController extends Controller
         // $Meal['slug'] = Str::slug($request->name, '-');
         // $request['slug'] = Str::slug($request->name, '-');
         // dd("aaa");
+        // $request['image'] = $request->file('image')->store('images', 'public');
         Meal::create($request->validated());
         toast('Meal created with success', 'success');
         return redirect()->route('meals.index');
@@ -98,19 +100,19 @@ class MealController extends Controller
      * @param  \App\Models\Meal  $meal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Meal $meal)
+    public function update(StoreRequest $request, Meal $meal)
     {
-        $request->validate([
-            'name' => 'required|min:5',
-            'day' => 'required',
-            'type' => 'required',
-        ]);
-        $Meal['name'] = $request->name;
-        $Meal['description'] = $request->description;
-        $Meal['day'] = $request->day;
-        $Meal['type'] = $request->type;
+        // $request->validate([
+        //     'name' => 'required|min:5',
+        //     'day' => 'required',
+        //     'type' => 'required',
+        // ]);
+        // $Meal['name'] = $request->name;
+        // $Meal['description'] = $request->description;
+        // $Meal['day'] = $request->day;
+        // $Meal['type'] = $request->type;
         // $Meal['slug'] = Str::slug($request->name, '-');
-        Meal::where('id', $meal->id)->update($Meal);
+        Meal::where('id', $meal->id)->update($request);
         toast('Meal updated with success', 'success');
         return redirect()->route('dashboard');
     }

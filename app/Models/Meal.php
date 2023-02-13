@@ -14,6 +14,6 @@ class Meal extends Model
         'description',
         'day',
         'type',
-        'slug',
+        'image',
     ];
 }
