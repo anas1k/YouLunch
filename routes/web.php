@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
 
 Route::get('/dashboard', [MealController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -28,5 +28,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('meals', MealController::class)->middleware('auth');
+Route::get('/', [MealController::class, 'welcome'])->name('welcome');
 
 require __DIR__ . '/auth.php';

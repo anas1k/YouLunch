@@ -17,10 +17,23 @@ class MealController extends Controller
     {
         $AllMeals = Meal::all();
         /* toast('Get meals with success', 'success'); */
-        return view('dashboard', ['AllMeals' => $AllMeals])/* ->with('success', 'Get meals wit') */; //associative array composed of key: 'AllMeals' and value: $AllMeals
+        /* return view('welcome', ['AllMeals' => $AllMeals]); */
+        return view('dashboard',  ['AllMeals' => $AllMeals]); //associative array composed of key: 'AllMeals' and value: $AllMeals
+        //associative array composed of key: 'AllMeals' and value: $AllMeals
         /* return view('meals.index', compact('AllMeals')); */
     }
-
+    public function welcome()
+    {
+        $Starters = Meal::all()->where('type', 'Starter');
+        $Mains = Meal::all()->where('type', 'Main');
+        $Desserts = Meal::all()->where('type', 'Dessert');
+        /* return dd($AllMeals); */
+        /* toast('Get meals with success', 'success'); */
+        /* return view('welcome', ['AllMeals' => $AllMeals]); */
+        return view('welcome',  ['Starters' => $Starters, 'Mains' => $Mains, 'Desserts' => $Desserts]); //associative array composed of key: 'AllMeals' and value: $AllMeals
+        //associative array composed of key: 'AllMeals' and value: $AllMeals
+        /* return view('meals.index', compact('AllMeals')); */
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>YouLunch - Menu </title>
 
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -45,100 +45,126 @@
             <div class=" mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
 
                 <div class=" relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-black">
-                        <thead class="text-xs text-gray-700 uppercase dark:text-black">
+                    <table class="w-full text-sm text-left text-white dark:text-black">
+                        <thead class="text-xs text-white uppercase dark:text-black">
                             <tr>
+                                <th scope="col-2" class="px-6 py-3 text-black dark:bg-gray-300">
+                                    Day
+                                </th>
                                 <th scope="col-2" class="px-6 py-3 bg-gray-50 dark:bg-gray-400">
                                     Monday
                                 </th>
-                                <th scope="col" class="px-6 py-3">
+                                <th scope="col" class="px-6 py-3 text-white">
                                     Tuesday
                                 </th>
                                 <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-400">
                                     Wednesday
                                 </th>
-                                <th scope="col" class="px-6 py-3">
+                                <th scope="col" class="px-6 py-3 text-white">
                                     Thursday
                                 </th>
-                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-500">
+                                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-400">
                                     Friday
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                            <tr class="border-b border-gray-200 text-white dark:border-gray-700">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-black dark:bg-gray-300">
+                                    {{ 'Starter' }}
+                                </th>
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                    Starter
+                                    @foreach ($Starters as $meal)
+                                        {!! $meal->day == 'Monday' ? $meal->name . '<br>' : '' !!}
+                                    @endforeach
                                 </th>
                                 <td class="px-6 py-4">
-                                    Sliver
+                                    @foreach ($Starters as $meal)
+                                        {!! $meal->day == 'Tuesday' ? $meal->name . '<br>' : '' !!}
+                                    @endforeach
                                 </td>
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                    Laptop
+                                    @foreach ($Starters as $meal)
+                                        {!! $meal->day == 'Wednesday' ? $meal->name . '<br>' : '' !!}
+                                    @endforeach
                                 </td>
                                 <td class="px-6 py-4">
-                                    $2999
+                                    @foreach ($Starters as $meal)
+                                        {!! $meal->day == 'Thursday' ? $meal->name . '<br>' : '' !!}
+                                    @endforeach
+                                </td>
+                                <td class="px-6 py-4">
+                                    @foreach ($Starters as $meal)
+                                        {!! $meal->day == 'Friday' ? $meal->name . '<br>' : '' !!}
+                                    @endforeach
                                 </td>
                             </tr>
-                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                            <tr class="border-b border-gray-200 text-white dark:border-gray-700">
+
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-black dark:bg-gray-300">
+                                    {{ 'Main' }}
+                                </th>
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                    Microsoft Surface Pro
+                                    @foreach ($Mains as $meal)
+                                        {!! $meal->day == 'Monday' ? $meal->name . '<br>' : '' !!}
+                                    @endforeach
                                 </th>
                                 <td class="px-6 py-4">
-                                    White
+                                    @foreach ($Mains as $meal)
+                                        {!! $meal->day == 'Tuesday' ? $meal->name . '<br>' : '' !!}
+                                    @endforeach
                                 </td>
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                    Laptop PC
+                                    @foreach ($Mains as $meal)
+                                        {!! $meal->day == 'Wednesday' ? $meal->name . '<br>' : '' !!}
+                                    @endforeach
                                 </td>
                                 <td class="px-6 py-4">
-                                    $1999
+                                    @foreach ($Mains as $meal)
+                                        {!! $meal->day == 'Thursday' ? $meal->name . '<br>' : '' !!}
+                                    @endforeach
+                                </td>
+                                <td class="px-6 py-4">
+                                    @foreach ($Mains as $meal)
+                                        {!! $meal->day == 'Friday' ? $meal->name . '<br>' : '' !!}
+                                    @endforeach
                                 </td>
                             </tr>
-                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                            <tr class="border-b border-gray-200 text-white dark:border-gray-700">
+
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-black dark:bg-gray-300">
+                                    {{ 'Dessert' }}
+                                </th>
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                    Magic Mouse 2
+                                    @foreach ($Desserts as $meal)
+                                        {!! $meal->day == 'Monday' ? $meal->name . '<br>' : '' !!}
+                                    @endforeach
                                 </th>
                                 <td class="px-6 py-4">
-                                    Black
+                                    @foreach ($Desserts as $meal)
+                                        {!! $meal->day == 'Tuesday' ? $meal->name . '<br>' : '' !!}
+                                    @endforeach
                                 </td>
                                 <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                    Accessories
+                                    @foreach ($Desserts as $meal)
+                                        {!! $meal->day == 'Wednesday' ? $meal->name . '<br>' : '' !!}
+                                    @endforeach
                                 </td>
                                 <td class="px-6 py-4">
-                                    $99
-                                </td>
-                            </tr>
-                            <tr class="border-b border-gray-200 dark:border-gray-700">
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                    Google Pixel Phone
-                                </th>
-                                <td class="px-6 py-4">
-                                    Gray
-                                </td>
-                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                    Phone
+                                    @foreach ($Desserts as $meal)
+                                        {!! $meal->day == 'Thursday' ? $meal->name . '<br>' : '' !!}
+                                    @endforeach
                                 </td>
                                 <td class="px-6 py-4">
-                                    $799
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
-                                    Apple Watch 5
-                                </th>
-                                <td class="px-6 py-4">
-                                    Red
-                                </td>
-                                <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-                                    Wearables
-                                </td>
-                                <td class="px-6 py-4">
-                                    $999
+                                    @foreach ($Desserts as $meal)
+                                        {!! $meal->day == 'Friday' ? $meal->name . '<br>' : '' !!}
+                                    @endforeach
                                 </td>
                             </tr>
                         </tbody>
