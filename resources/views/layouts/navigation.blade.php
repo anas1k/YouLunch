@@ -11,17 +11,17 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8  m-10 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8  sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Home') }}
                     </x-nav-link>
 
                 </div>
-                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('meal/menu')" :active="request()->routeIs('meal/menu')">
-                        {{ __('Menu') }}
+                <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('meal.menu')" :active="request()->routeIs('meal/menu')">
+                        {{ __('Meals') }}
                     </x-nav-link>
-                </div> --}}
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -87,6 +87,11 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Home') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('meal.menu')" :active="request()->routeIs('meal.menu')">
+                {{ __('Meals') }}
             </x-responsive-nav-link>
         </div>
 
