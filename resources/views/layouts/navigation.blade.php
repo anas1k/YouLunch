@@ -11,12 +11,13 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8  sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Home') }}
-                    </x-nav-link>
-                </div>
-
+                @auth
+                    <div class="hidden space-x-8  sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('Home') }}
+                        </x-nav-link>
+                    </div>
+                @endauth
                 <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('meal.menu')" :active="request()->routeIs('meal.menu')">
                         {{ __('Meals') }}
@@ -34,7 +35,6 @@
                                 @auth
                                     <div>{{ Auth::user()->name }}</div>
                                 @endauth
-
 
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
