@@ -15,10 +15,10 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Home') }}
                     </x-nav-link>
-
                 </div>
+
                 <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('meal.menu')" :active="request()->routeIs('meal/menu')">
+                    <x-nav-link :href="route('meal.menu')" :active="request()->routeIs('meal.menu')">
                         {{ __('Meals') }}
                     </x-nav-link>
                 </div>
