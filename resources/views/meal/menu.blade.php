@@ -1,4 +1,9 @@
 <x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('All Meals') }}
+        </h2>
+    </x-slot>
     <div class="w-9/12 mx-auto">
         <div class="grid grid-cols-1 py-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-2">
             @foreach ($AllMeals as $meal)

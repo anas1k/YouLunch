@@ -7,7 +7,6 @@ use App\Models\Meal;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 
 class MealController extends Controller
 {
