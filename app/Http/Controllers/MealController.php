@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRequest;
 use App\Models\Meal;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -21,6 +22,13 @@ class MealController extends Controller
         /* toast('Get meals with success', 'success'); */
         return view('dashboard',  ['AllMeals' => $AllMeals]); //associative array composed of key: 'AllMeals' and value: $AllMeals
         /* return view('meals.index', compact('AllMeals')); */
+    }
+    public function menu()
+    {
+        $AllMeals = Meal::all();
+        /* toast('Get meals with success', 'success'); */
+        // return view('meal.menu',  ['AllMeals' => $AllMeals]);
+        return view('meal.menu', compact('AllMeals'));
     }
     public function welcome()
     {
@@ -63,7 +71,18 @@ class MealController extends Controller
         // $request['slug'] = Str::slug($request->name, '-');
         // dd("aaa");
         // $request['image'] = $request->file('image')->store('images', 'public');
-        Meal::create($request->validated());
+        // if ($request->hasFile('image')) {
+        //     $file = request()->file('image');
+        //     $extension = $file->getClientOriginalExtension();
+        //     $filename = time() . '.' . $extension;
+        //     $file->move('/storage/images/', $filename);
+        //     $request['image'] = $filename;
+        // } else {
+        //     $request['image'] = '';
+        // }
+        $image = time() . '.' . request()->image->getClientOriginalExtension();
+        request()->image->move(public_path('storage/images'), $image);
+        Meal::create(/* $request->validated() ,*/['image' => $image, 'name' => $request->name, 'description' => $request->description, 'day' => $request->day, 'type' => $request->type]);
         toast('Meal created with success', 'success');
         return redirect()->route('meals.index');
     }
@@ -112,7 +131,18 @@ class MealController extends Controller
         // $Meal['day'] = $request->day;
         // $Meal['type'] = $request->type;
         // $Meal['slug'] = Str::slug($request->name, '-');
-        Meal::where('id', $meal->id)->update($request);
+        if ($request->hasFile('image')) {
+            $dest = 'storage/images/' . $meal->image;
+            if (File::exists($dest)) {
+                File::delete($dest);
+            }
+            $image = time() . '.' . request()->image->getClientOriginalExtension();
+            request()->image->move(public_path('storage/images'), $image);
+            $request['image'] = $image;
+        } else {
+            $image = $meal->image;
+        }
+        Meal::where('id', $meal->id)->update(['image' => $image, 'name' => $request->name, 'description' => $request->description, 'day' => $request->day, 'type' => $request->type]);
         toast('Meal updated with success', 'success');
         return redirect()->route('dashboard');
     }

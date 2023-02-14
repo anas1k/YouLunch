@@ -29,5 +29,7 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('meals', MealController::class)->middleware('auth');
 Route::get('/', [MealController::class, 'welcome'])->name('welcome');
+Route::get('/meal/menu', [MealController::class, 'menu'])->name('meal.menu');
+
 
 require __DIR__ . '/auth.php';
