@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('meals', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable(false);
             $table->text('description')->nullable();
             $table->string('image')->nullable();
-            $table->string('day');
-            $table->string('type');
+            $table->string('day')->nullable(false);
+            $table->string('type')->nullable(false);
             $table->string('slug')->nullable();
             $table->timestamps();
         });

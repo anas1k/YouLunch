@@ -17,16 +17,13 @@ class MealController extends Controller
      */
     public function index()
     {
-        $AllMeals = Meal::all();
-        /* toast('Get meals with success', 'success'); */
+        $AllMeals = Meal::all(); // paginate !!
         return view('dashboard',  ['AllMeals' => $AllMeals]); //associative array composed of key: 'AllMeals' and value: $AllMeals
         /* return view('meals.index', compact('AllMeals')); */
     }
     public function menu()
     {
         $AllMeals = Meal::all();
-        /* toast('Get meals with success', 'success'); */
-        // return view('meal.menu',  ['AllMeals' => $AllMeals]);
         return view('meal.menu', compact('AllMeals'));
     }
     public function welcome()
@@ -35,7 +32,6 @@ class MealController extends Controller
         $Mains = Meal::all()->where('type', 'Main');
         $Desserts = Meal::all()->where('type', 'Dessert');
         return view('welcome',  ['Starters' => $Starters, 'Mains' => $Mains, 'Desserts' => $Desserts]);
-        /* return view('meals.index', compact('AllMeals')); */
     }
     /**
      * Show the form for creating a new resource.
@@ -155,7 +151,10 @@ class MealController extends Controller
     public function destroy(Meal $meal)
     {
         /* Meal::find($meal->id)->delete(); */
-
+        $dest = 'storage/images/' . $meal->image;
+        if (File::exists($dest)) {
+            File::delete($dest);
+        }
         Meal::destroy($meal->id);
         toast('Meal deleted with success', 'success');
         return redirect()->route('meals.index');
